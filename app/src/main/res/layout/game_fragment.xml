@@ -11,17 +11,17 @@
         android:visibility="gone"
         android:layout_height="match_parent">
 
-        <VideoView
-            android:layout_width="match_parent"
-            android:id="@+id/landing_video"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:layout_height="match_parent"/>
+        <!--<VideoView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/landing_video"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_height="match_parent"/>-->
 
         <View
             android:layout_width="match_parent"
-            android:background="@color/gray_transparent"
+            android:background="@color/tw_blue"
             android:layout_height="match_parent"/>
 
         <Button
@@ -48,7 +48,7 @@
 
         <ImageView
             android:layout_width="100dp"
-            android:src="@drawable/donaldsays_logo"
+            android:src="@drawable/cracked_egg_logo"
             android:layout_below="@id/app_title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/medium"
@@ -161,16 +161,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/win_container"
-        android:visibility="gone"
         android:background="@color/light_gray_transparent"
+        android:visibility="gone"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:src="@drawable/world_peace"
-            android:scaleType="centerCrop"
-            android:layout_height="match_parent"/>
-        `
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_centerInParent="true"
@@ -218,15 +213,24 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:background="@color/gray_transparent"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:id="@+id/win_text"
                 android:padding="@dimen/large"
-                android:layout_above="@id/button_container_win"
                 android:textSize="@dimen/text_xlarge"
-                android:text="Congratulations, you've defeated white supremacy!"
-                android:layout_height="wrap_content"/>
+                android:text="You win!"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="50dp" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:src="@drawable/cracked_egg_logo"
+                android:layout_below="@id/win_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/medium"
+                android:layout_height="100dp"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -249,18 +253,79 @@
 
     </RelativeLayout>
 
+    <!--NEXT LEVEL-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/next_level_container"
+        android:background="@color/light_gray_transparent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:paddingBottom="20dp"
+            android:layout_height="match_parent">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/button_container_next_level"
+                android:layout_centerInParent="true"
+                android:paddingBottom="@dimen/large"
+                android:paddingTop="@dimen/large"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:text="Next Level"
+                    android:id="@+id/play_next_level"
+                    android:elevation="14dp"
+                    android:visibility="visible"
+                    android:layout_marginEnd="@dimen/medium"
+                    android:layout_marginTop="@dimen/medium"
+                    android:background="@drawable/pressable_primary_to_primary_light_rounded"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/large"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:id="@+id/next_level_text"
+                android:padding="@dimen/large"
+                android:textSize="@dimen/text_xlarge"
+                android:text="Move to the next level!"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="50dp" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:src="@drawable/cracked_egg_logo"
+                android:layout_below="@id/next_level_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/medium"
+                android:layout_height="100dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!--END NEXT LEVEL-->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/lose_container"
-        android:visibility="gone"
         android:background="@color/light_gray_transparent"
+        android:visibility="gone"
         android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:src="@drawable/end_of_world_4"
-            android:scaleType="centerCrop"
-            android:layout_height="match_parent"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -306,15 +371,22 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:background="@color/light_gray_transparent"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:id="@+id/lose_text"
-                android:layout_above="@id/button_container_lose"
+                android:layout_marginTop="10dp"
                 android:padding="@dimen/large"
                 android:textSize="@dimen/text_xlarge"
-                android:text="You made America GREAT again!"
+                android:text="You lost!"
                 android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:src="@drawable/whole_egg"
+                android:layout_below="@id/lose_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/medium"
+                android:layout_height="100dp"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -346,12 +418,13 @@
         android:visibility="gone"
         android:layout_height="match_parent">
 
+
         <Button
             android:layout_width="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:text="Fire!"
+            android:text="Smash!"
             android:textAllCaps="true"
             android:id="@+id/shoot_button"
             android:background="@drawable/rounded_box_5dp_primary_color"
@@ -375,7 +448,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:text="0 / 270"
+            android:text="0"
             android:layout_alignParentTop="true"
             android:background="@color/light_gray_transparent"
             android:layout_alignParentLeft="true"
@@ -386,40 +459,23 @@
             android:padding="@dimen/large"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="Electoral Votes"
-            android:layout_below="@id/electoral_vote_counter"
-            android:background="@color/light_gray_transparent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@id/electoral_vote_counter"
-            android:id="@+id/electoral_vote_text"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:paddingStart="@dimen/xlarge"
-            android:paddingEnd="@dimen/large"
-            android:paddingBottom="@dimen/large"
-            android:layout_height="wrap_content"/>
-
 
         <TextView
             android:layout_width="wrap_content"
-            android:text="Days to Election"
-            android:background="@color/light_gray_transparent"
+            android:text="Smashed Eggs"
             android:layout_alignParentRight="true"
             android:id="@+id/days_to_election_text"
-            android:layout_alignBottom="@id/electoral_vote_text"
             android:paddingStart="@dimen/large"
             android:paddingEnd="@dimen/large"
             android:paddingBottom="@dimen/large"
+            android:layout_marginTop="55dp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:text="100"
+            android:text="0"
             android:background="@color/light_gray_transparent"
-            android:layout_above="@id/electoral_vote_text"
             android:layout_alignEnd="@id/days_to_election_text"
             android:layout_alignStart="@id/days_to_election_text"
             android:gravity="center"
@@ -438,7 +494,9 @@
         android:visibility="visible"
         android:id="@+id/sensor_data_overlay"
         android:paddingStart="@dimen/xxlarge"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/win_container"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="wrap_content"

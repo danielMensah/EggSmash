@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="@dimen/bitcoin_size"
-        android:src="@mipmap/trumpface"
+        android:src="@mipmap/wholeegg"
         android:id="@+id/ar_object_image"
         android:layout_height="@dimen/bitcoin_size"/>
 
