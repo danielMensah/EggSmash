@@ -108,10 +108,6 @@ public class GameFragment extends Fragment implements SensorEventListener {
     private int gameTimer;
     private int totSmashedEggs;
     private int visibleArObjects;
-    private int L1 = 40;
-    private int L2 = 90;
-    private int L3 = 180;
-    private int L4 = 350;
     private int CURRENT_LEVEL = 1;
 
     private float accelX;
@@ -123,6 +119,10 @@ public class GameFragment extends Fragment implements SensorEventListener {
     private float gyroZ;
 
     public Vibrator vibe;
+    public int L1 = 40;
+    public int L2 = 90;
+    public int L3 = 180;
+    public int L4 = 350;
 
 
     private Handler handler = new Handler();
@@ -140,16 +140,16 @@ public class GameFragment extends Fragment implements SensorEventListener {
         }
     };
 
-    final Runnable countElectoralVotes = new Runnable() {
+    final Runnable gameTimerController = new Runnable() {
         @Override
         public void run() {
             gameTimer += 1;
-            ((TextView)rootView.findViewById(R.id.electoral_vote_counter)).setText(String.valueOf(gameTimer));
+            ((TextView)rootView.findViewById(R.id.game_timer)).setText(String.valueOf(gameTimer));
             int timeToNextVote = (int)Math.round((double)TIME_TO_NEXT_VOTE / (1 +
                     (visibleArObjects / AR_COUNT_TIME_FACTOR)));
 
             if(gameTimer > 200) {
-                ((TextView)rootView.findViewById(R.id.electoral_vote_counter)).setTextColor
+                ((TextView)rootView.findViewById(R.id.game_timer)).setTextColor
                         (ContextCompat.getColor(getContext(), R.color.primary));
             }
 
@@ -187,13 +187,13 @@ public class GameFragment extends Fragment implements SensorEventListener {
     };
 
     public void continueGame(int timeToNextVote) {
-        handler.postDelayed(countElectoralVotes, timeToNextVote);
+        handler.postDelayed(gameTimerController, timeToNextVote);
     }
 
     public void smashedEggs() {
         totSmashedEggs += 1;
         gameTimer -= 5;
-        ((TextView)rootView.findViewById(R.id.days_to_election)).setText("" + totSmashedEggs);
+        ((TextView)rootView.findViewById(R.id.smashed_eggs)).setText("" + totSmashedEggs);
     }
 
     final Runnable startFiring = new Runnable() {
@@ -236,12 +236,6 @@ public class GameFragment extends Fragment implements SensorEventListener {
             setNewMargins();
         }
     };
-
-//    public GameFragment() {
-//        // Required empty public constructor
-//    }
-//
-//    public void setUIArguments() {}
 
     @Override
     public void onAttach(Context context) {
@@ -290,7 +284,7 @@ public class GameFragment extends Fragment implements SensorEventListener {
         Log.d(TAG,"onStop");
         stopAllRunnables();
         sensorManager.unregisterListener(this);
-        handler.removeCallbacks(countElectoralVotes);
+        handler.removeCallbacks(gameTimerController);
         handler.removeCallbacks(autoGenerateArObjects);
 
         if(winMp != null) winMp.stop();
@@ -407,19 +401,6 @@ public class GameFragment extends Fragment implements SensorEventListener {
 
         rootView.findViewById(R.id.share_win).setOnClickListener(shareApp);
         rootView.findViewById(R.id.share_lose).setOnClickListener(shareApp);
-
-        View.OnClickListener harambeLink = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.trackEvent("Harambe Shirt Link Clicked");
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://teespring.com/dems-out-for-harambe-2016#pid=2&cid=576&sid=front"));
-                startActivity(browserIntent);
-            }
-        };
-
-        rootView.findViewById(R.id.shirts_link_win).setOnClickListener(harambeLink);
-        rootView.findViewById(R.id.shirts_link_lose).setOnClickListener(harambeLink);
-
 
         rootView.findViewById(R.id.how_to_play).setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -609,7 +590,7 @@ public class GameFragment extends Fragment implements SensorEventListener {
     private void initializeGameTimers(int seconds, int smashedEggs) {
         totSmashedEggs = smashedEggs;
         gameTimer = seconds;
-        countElectoralVotes.run();
+        gameTimerController.run();
     }
 
     private void initializeSound() {
@@ -632,7 +613,7 @@ public class GameFragment extends Fragment implements SensorEventListener {
             arRightTrackerObjects.get(i).setVisibility(View.GONE);
         }
         handler.removeCallbacks(autoGenerateArObjects);
-        handler.removeCallbacks(countElectoralVotes);
+        handler.removeCallbacks(gameTimerController);
 
         if (CURRENT_LEVEL == 1) {
             if (totSmashedEggs > L1) {
@@ -667,26 +648,6 @@ public class GameFragment extends Fragment implements SensorEventListener {
                 lostGame();
             }
         }
-
-//        if(totSmashedEggs > 35) {
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    rootView.findViewById(R.id.win_container).setVisibility(View.VISIBLE);
-//                    mListener.trackEvent("Game Won");
-//                    winMp.start();
-//                }
-//            }, 500);
-//        } else {
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    rootView.findViewById(R.id.lose_container).setVisibility(View.VISIBLE);
-//                    mListener.trackEvent("Game Lost");
-//                    loseMp.start();
-//                }
-//            }, 500);
-//        }
 
         gamePaused = true;
     }
@@ -864,7 +825,7 @@ public class GameFragment extends Fragment implements SensorEventListener {
         rootView.findViewById(R.id.game_hud_container).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.shoot_button).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.crosshairs).setVisibility(View.VISIBLE);
-        ((TextView)rootView.findViewById(R.id.electoral_vote_counter)).setTextColor
+        ((TextView)rootView.findViewById(R.id.game_timer)).setTextColor
                 (ContextCompat.getColor(getContext(), R.color.white));
 
         generateArObjects();
@@ -914,22 +875,6 @@ public class GameFragment extends Fragment implements SensorEventListener {
                 ().getPackageName());
         startActivity(Intent.createChooser(shareIntent, "Share link using"));
     }
-
-//    private void startVideo() {
-//        landingVideo = (VideoView)rootView.findViewById(R.id.landing_video);
-//        landingVideo.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName()
-//                + "/" + R.raw.landingvideo));
-//        landingVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mediaPlayer) {
-//                mediaPlayer.setLooping(true);
-//                mediaPlayer.setVolume(0, 0);
-//                landingVideo.start();
-//            }
-//        });
-//        landingVideo.setVisibility(View.VISIBLE);
-//
-//    }
 
     private void stopAllRunnables()
     {

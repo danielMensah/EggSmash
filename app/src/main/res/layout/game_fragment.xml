@@ -168,20 +168,21 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_centerInParent="true"
             android:paddingBottom="20dp"
-            android:layout_height="match_parent">
-
-
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/button_container_win"
-                android:layout_centerInParent="true"
                 android:paddingBottom="@dimen/large"
                 android:paddingTop="@dimen/large"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:layout_below="@+id/imageView"
+                android:layout_centerHorizontal="true">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -222,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="50dp" />
+                android:layout_marginTop="120dp" />
 
             <ImageView
                 android:layout_width="100dp"
@@ -230,24 +231,8 @@
                 android:layout_below="@id/win_text"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/medium"
-                android:layout_height="100dp"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:text="#JusticeForHarambe"
-                android:id="@+id/shirts_link_win"
-                android:visibility="visible"
-                android:elevation="14dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/button_container_win"
-                android:layout_marginTop="@dimen/xxxlarge"
-                android:background="@drawable/rounded_box_blue_light"
-                android:textColor="@color/white"
-                android:paddingTop="@dimen/large"
-                android:paddingBottom="@dimen/large"
-                android:paddingStart="@dimen/xxxlarge"
-                android:paddingEnd="@dimen/xxxlarge"
-                android:layout_height="wrap_content"/>
+                android:layout_height="100dp"
+                android:id="@+id/imageView" />
 
         </RelativeLayout>
 
@@ -274,10 +259,12 @@
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/button_container_next_level"
-                android:layout_centerInParent="true"
                 android:paddingBottom="@dimen/large"
                 android:paddingTop="@dimen/large"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_below="@+id/imageView3"
+                android:layout_centerHorizontal="true">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -305,7 +292,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="50dp" />
+                android:layout_marginTop="120dp" />
 
             <ImageView
                 android:layout_width="100dp"
@@ -313,7 +300,8 @@
                 android:layout_below="@id/next_level_text"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/medium"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp"
+                android:id="@+id/imageView3" />
 
         </RelativeLayout>
 
@@ -336,10 +324,12 @@
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/button_container_lose"
-                android:layout_centerInParent="true"
                 android:paddingBottom="@dimen/large"
                 android:paddingTop="@dimen/large"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="44dp">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -374,7 +364,7 @@
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:id="@+id/lose_text"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="120dp"
                 android:padding="@dimen/large"
                 android:textSize="@dimen/text_xlarge"
                 android:text="You lost!"
@@ -386,26 +376,8 @@
                 android:layout_below="@id/lose_text"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/medium"
-                android:layout_height="100dp"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:text="#JusticeForHarambe"
-                android:id="@+id/shirts_link_lose"
-                android:visibility="visible"
-                android:elevation="14dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/button_container_lose"
-                android:layout_marginTop="@dimen/xxxlarge"
-                android:background="@drawable/rounded_box_blue_light"
-                android:textColor="@color/white"
-                android:paddingTop="@dimen/large"
-                android:paddingBottom="@dimen/large"
-                android:paddingStart="@dimen/xxxlarge"
-                android:paddingEnd="@dimen/xxxlarge"
-                android:layout_height="wrap_content"/>
-
-
+                android:layout_height="100dp"
+                android:id="@+id/imageView2" />
 
         </RelativeLayout>
 
@@ -452,7 +424,7 @@
             android:layout_alignParentTop="true"
             android:background="@color/light_gray_transparent"
             android:layout_alignParentLeft="true"
-            android:id="@+id/electoral_vote_counter"
+            android:id="@+id/game_timer"
             android:textColor="@color/white"
             android:gravity="center"
             android:textSize="@dimen/text_xxlarge"
@@ -481,7 +453,7 @@
             android:gravity="center"
             android:textSize="@dimen/text_xxlarge"
             android:layout_alignParentTop="true"
-            android:id="@+id/days_to_election"
+            android:id="@+id/smashed_eggs"
             android:padding="@dimen/large"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
@@ -495,7 +467,7 @@
         android:id="@+id/sensor_data_overlay"
         android:paddingStart="@dimen/xxlarge"
         android:layout_height="match_parent"
-        android:layout_below="@+id/win_container"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
         <RelativeLayout

@@ -4,7 +4,9 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -12,12 +14,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
-import com.onesignal.OneSignal;
 import com.mrdan.eggsmash.interfaces.OnTrumpGoFragmentInteractionListener;
 import com.mrdan.eggsmash.utils.Constants;
 import com.mrdan.eggsmash.utils.TypefaceUtil;
@@ -47,7 +47,6 @@ public class MainActivity extends FragmentActivity implements
         Log.d(TAG, "onCreate");
         mixpanel = MixpanelAPI.getInstance(this, "9feb719bbed8b10b51fe93fd9915d97d");
 
-        OneSignal.startInit(this).init();
         setContentView(R.layout.activity_donald_says_main);
         applyCustomStyles();
     }

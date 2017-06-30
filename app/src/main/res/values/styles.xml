@@ -1,8 +1,7 @@
 <resources>
 
 
-    <style name="AppTheme"
-           parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
         <item name="colorPrimary">@color/primary</item>
@@ -14,6 +13,18 @@
         <item name="android:textAllCaps">false</item>
         <item name="textAllCaps">false</item>
         <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
     </style>
 
 </resources>
